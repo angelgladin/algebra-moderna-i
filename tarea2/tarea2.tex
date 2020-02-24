@@ -1,0 +1,310 @@
+%%%
+ %
+ % Copyright (C) 2020 Ángel Iván Gladín García
+ %
+ % This program is free software: you can redistribute it and/or modify
+ % it under the terms of the GNU General Public License as published by
+ % the Free Software Foundation, either version 3 of the License, or
+ % (at your option) any later version.
+ %
+ % This program is distributed in the hope that it will be useful,
+ % but WITHOUT ANY WARRANTY; without even the implied warranty of
+ % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ % GNU General Public License for more details.
+ %
+ % You should have received a copy of the GNU General Public License
+ % along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{commath}
+
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage{longtable}
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{verbatim}
+
+% Set the overall layout of the tree
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm]
+\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm]
+
+% Define styles for bags and leafs
+\tikzstyle{bag} = [text width=4em, text centered]
+\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\usepackage{import}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Pro}{\mathds{P}}
+\newcommand{\Oh}{\mathcal{O}} %% Notacion "O"
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\sol}{\textbf{\underline{Solución}: }} %% Solucion
+\newcommand{\af}{\textbf{\underline{Afirmación}: }}
+\newcommand{\cej}{\textbf{\underline{Contraejemplo}: }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+        Universidad Nacional Autónoma de México\\
+        Facultad de Ciencias\\
+        Álgebra Moderna I\\
+    \vspace{.5cm}
+    \large
+        \textbf{Tarea 2}
+}
+\author{
+    Ángel Iván Gladín García\\
+    No. cuenta: 313112470\\
+    \texttt{angelgladin@ciencias.unam.mx}
+}
+\date{5 de Febrero 2019}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Teorema}
+\newtheorem{example}{Ejemplo}
+\newtheorem{corollary}{Corolario}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definicion}
+\newtheorem{prop}{Proposicion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Ejercicio 1.}
+Sea $G$ un grupo tal que $x^2 = e$ para cualquier $x \in G$, entonces $G$ es abeliano.
+\begin{proof}
+    Sean $a, b \in G$, por hipótesis entonces $a^2= e$ y $b^2 = e$. Si tomamos
+    $(a \ast b)^2 = (a \ast b) \ast (a \ast b) = a \ast b \ast a \ast b$ se tiene así la
+    siguiente igualdad,
+    \[
+        a \ast b \ast a \ast b = e  \tag{1}
+    \]
+    Si en $(1)$ multiplicamos por $a$ a la derecha y por $b$ a la izquierda se obtiene,
+    \begin{align*}
+        a \ast a \ast b \ast a \ast b \ast b = a \ast e \ast b && \text{Multiplicando por $a$ y $b$ en $(1)$}\\
+        a^2 \ast b \ast a \ast b^2 = a \ast e \ast b && \text{Por def. de potencia}\\
+        e \ast b \ast a \ast e = a \ast e \ast b && \text{Por hipótesis}\\
+        b \ast a = a \ast b && \text{Simplificando}
+    \end{align*}
+    Ergo $G$ es abeliano.
+\end{proof}
+
+\subsection*{Ejercicio 2.}
+\begin{enumerate}[label=\alph*)]
+    \item Sea $G$ un grupo abeliano finito que no contiene elementos $a \not= e$ tal que $a^2 = e$. Evalúa
+    $a_1 \ast a_2 \ast \cdots \ast a_n$ donde $a_1, a_2, \cdots, a_n$ es una lista sin repeticiones, de
+    todos los elementos de $G$.
+    \begin{proof}\af $$\prod_{a \in G} a = e$$
+        Como por hipótesis los elementos $a \in G$ que no son el neutro cumplen que $a^2 = e$ que se puede
+        reescribir como
+        $a = a^{-1} \iff a^{-1} \ast a^2 = a^{-1} \ast e \iff a^{-1} \ast a \ast a = a^{-1} \iff e \ast a = a^{-1}$.
+        También como en $a_1, a_2, \cdots, a_n$ todos los elementos son distintos (y también su inverso es único) podemos
+        descomponerlo en dos productos\footnote{Se puede ``reacomodar'' los elementos del producto por ser un grupo abeliano.}
+        $(a_1 \ast a_2 \ast \ldots \ast a_n)$ y $(a_1^{-1} \ast a_2^{-1} \ast \ldots \ast a_n^{-1})$ teniendo así,
+        \[
+            (a_1 \ast a_2 \ast \ldots \ast a_n) = (a_1 \ast a_2 \ast \ldots \ast a_n) \ast (a_1^{-1} \ast a_2^{-1} \ast \ldots \ast a_n^{-1}) = 
+            (a_1 \ast a_2 \ast \ldots \ast a_n)^2  = e
+        \]
+    \end{proof}
+
+    \item Pruebe el \textit{\textbf{Teorema de Wilson}}: Si $p$ es primo, entonces
+    \[
+        (p-1)! \equiv -1 \mod p
+    \]
+    \textit{Sugerencia}: Los elementos no cero de $\Z_p$ forma un grupo multiplicativo.
+    \begin{proof}
+        Consideremos el grupo $G$ de elementos no cero de $\Z_p$ forma un grupo multiplicativo como
+        $G = ((\Z/p\Z)^\times, \cdot)$ donde $(\Z/p\Z)^\times = \{ [1], [2], \ldots, [p-1] \}$ y $(\cdot)$
+        como el producto en $\Z$, también se tiene que $G$ es abeliano por $\Z$.
+        
+        Como $p$ es primo, tenemos que solo tiene un solo elemento de orden 2, esto es que $a^2 = 1$ teniendo 
+        así que $a = \pm 1$. Lo denotaremos como $[-1]$.
+
+        Considerando a $(p-1)!$ como el producto de los elementos de $(\Z/p\Z)^\times$ tenemos dos posibles productos,
+        \[ \prod_{g \in G} g \tag{1} \]
+        \[ \prod_{g \in G,\ g^2 = 1} g \tag{2} \]
+        En (1) tenemos que $\forall g \in G \ \exists! g^{-1} \in G$, lo que se hace es ir ``emparejando''
+        cada elemento con su inverso. En (2) justo indica que el elemento es idempotente (su propio inverso), pero 
+        por la observación previo solo tenemos un elemento en $G$.
+
+        Por lo tanto,
+        \begin{align*}
+            (p-1)! &\equiv -1 \mod p\\
+            \prod_{g \in G} g = \prod_{g \in G,\ g^2 = 1} g = &\equiv [-1] \mod p
+        \end{align*}
+
+    \end{proof}
+\end{enumerate}
+
+\subsection*{Ejercicio 3.}
+\begin{enumerate}[label=\alph*)]
+    \item Si $\alpha = (1 \ 2 \ \cdots \ r-1 \ r)$, entonces $\alpha^{-1} = (r \ r-1 \ \cdots \ 2 \ 1)$.
+    \begin{proof}
+        Sea $\alpha \in S_n$ su composición son su inversa es $(i)$, es decir,\\
+        $\alpha \circ \alpha^{-1} = id = \alpha^{-1} \circ \alpha$.
+        Ahora tomando $(1 \ 2 \ \cdots \ r-1 \ r) (r \ r-1 \ \cdots \ 2 \ 1)$, fija cada elemento entre 1 y $n$.
+        La composición tiene siguiente regla de correspondencia $1 \mapsto r \mapsto 1$ y para $2 \leq j \leq n$
+        $j \mapsto j-1 \mapsto j$ \textbf{fijando} a cada elemento, por tanto es $(1)$.
+    \end{proof}
+
+    \item Encuentre el inverso de
+    \[
+        \bigl(\begin{smallmatrix}
+        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+        6 & 4 & 1 & 2 & 5 & 3 & 8 & 9 & 7
+        \end{smallmatrix}\bigr)
+    \]
+
+    Para encontrar su inverso primero mencionaremos una proposición que nos será de utilidad,
+    \begin{prop}
+        Si $\gamma \in S_n$ y $\gamma = \beta_i \cdots \beta_k$, entonces
+        $$ \gamma^{-1} = \beta_k^{-1} \cdots \beta_1^{-1} $$
+        \begin{proof} \textbf{\underline{Por inducción} } para $k \geq 2$.
+            \[
+                (\beta_1 \beta_2)(\beta_2^{-1} \beta_1^{-1}) =
+                    \beta_1(\beta_2\beta_2^{-1})\beta_1^{-1} =
+                    \beta_1 \beta^{-1} = (1)
+            \]
+            De manera análoga para $(\beta_2^{-1} \beta_1^{-1}) = (\beta_1 \beta_2) = (1)$.
+            
+            Para el caso inductivo, dea $\delta = \beta_1 \cdots \beta_k$, de modo que
+            $\beta_1 \cdots \beta_k \beta{k+1} = \delta \beta_{k+1}$. Entonces
+            \begin{align*}
+                (\beta_1 \cdots \beta_k \beta{k+1})^{1}
+                    &= (\delta \beta_{k+1})^{-1}\\
+                    &= \beta_{k+1}^{-1} \delta^{-1}\\
+                    &= \beta_{k+1}^{-1} (\beta_1 \cdots \beta_k)^{-1}
+                    &= \beta_{k+1}^{-1} \beta_{k}^{-1} \cdots \beta_1{-1}
+            \end{align*}
+        \end{proof}
+    \end{prop}
+    Entonces, escribiendo la permutación como $\alpha = (1 \ 6 \ 3) (2 \ 4) (7 \ 8 \ 9)$, y aplicando
+    la proposición anterior se tiene que
+    \[
+        \alpha^{-1} = (7 \ 8 \ 9)^{-1} (2 \ 4)^{-1} (1 \ 6 \ 3)^{-1} = (9 \ 8 \ 7) (4 \ 2) (3 \ 6 \ 1) = 
+            (7 \ 9 \ 8) (2 \ 4) (1 \ 3 \ 6)
+    \]
+    
+\end{enumerate}
+
+\subsection*{Ejercicio 4.}
+\textit{\textbf{Leyes de cancelación}}. En un grupo $G$, cualquiera de las ecuaciones $a \ast b = a \ast c$
+y $b \ast a = c \ast a$ implica $b = c$.
+\begin{proof}
+    Tomando la ecuación $a \ast b = a \ast c$, teniendo que $a \in G$ entonces existe $a^{-1}$ tal que
+    $a \ast a^{-1} = e$. Multiplicando por la izquierda la ecuación anterior por $a^{-1}$ se obtiene,
+    \begin{align*}
+        a \ast b = a \ast c && \text{Por hipótesis}\\
+        a^{-1} \ast a \ast b = a^{-1} \ast a \ast c && \text{Multiplicando por $a^{-1}$ por la izq.}\\
+        (a^{-1} \ast a) \ast b = (a^{-1} \ast a) \ast c && \text{Asociando}\\
+        e \ast b = e \ast c && \text{Neutro}\\
+        b = c
+    \end{align*}
+\end{proof}
+
+\subsection*{Ejercicio 5.}
+Pruebe que los siguientes cuatro permutaciones forman un grupo $\mathbf{V}$ (que es llamado el 4-grupo de Klein):
+\[
+    1; \qquad (1\ 2)(3\ 4); \qquad (1\ 3)(2\ 4); \qquad (1\ 4)(2\ 3);
+\]
+\begin{proof}
+    $\mathbf{V}$ es un grupo. Para ello usaremos la tabla de Cayley.
+    
+    \[
+    \begin{array}{l|*{4}{l}}
+                 & 1            & (1\ 2)(3\ 4) & (1\ 3)(2\ 4) & (1\ 4)(2\ 3)  \\
+    \hline
+    1            & 1            & (1\ 2)(3\ 4) & (1\ 3)(2\ 4) & (1\ 4)(2\ 3)  \\
+    (1\ 2)(3\ 4) & (1\ 2)(3\ 4) & 1            & (1\ 4)(2\ 3) & (1\ 3)(2\ 4)  \\
+    (1\ 3)(2\ 4) & (1\ 3)(2\ 4) & (1\ 4)(2\ 3)  & 1            & (1\ 2)(3\ 4) \\
+    (1\ 4)(2\ 3) & (1\ 4)(2\ 3) & (1\ 3)(2\ 4) & (1\ 2)(3\ 4) & 1 \\
+    \end{array} 
+    \]
+
+    Y observando que en efecto está bien porque satisface la tabla de Cayley del 4-grupo de Klein $K_4$,
+    \[
+        \begin{array}{l|*{4}{l}}
+            & e & a & b & c \\
+        \hline
+        e   & e & a & b & c \\
+        a   & a & e & c & b \\
+        b   & b & c & e & a \\
+        c   & c & b & a & e \\
+        \end{array} 
+        \]
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,227 @@
+%%%
+ %
+ % Copyright (C) 2019 Ángel Iván Gladín García
+ %
+ % This program is free software: you can redistribute it and/or modify
+ % it under the terms of the GNU General Public License as published by
+ % the Free Software Foundation, either version 3 of the License, or
+ % (at your option) any later version.
+ %
+ % This program is distributed in the hope that it will be useful,
+ % but WITHOUT ANY WARRANTY; without even the implied warranty of
+ % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ % GNU General Public License for more details.
+ %
+ % You should have received a copy of the GNU General Public License
+ % along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{commath}
+
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage{longtable}
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{verbatim}
+
+% Set the overall layout of the tree
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm]
+\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm]
+
+% Define styles for bags and leafs
+\tikzstyle{bag} = [text width=4em, text centered]
+\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\usepackage{import}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Pro}{\mathds{P}}
+\newcommand{\Oh}{\mathcal{O}} %% Notacion "O"
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\sol}{\textbf{\underline{Solución}: }} %% Solucion
+\newcommand{\af}{\textbf{\underline{Afirmación}: }}
+\newcommand{\cej}{\textbf{\underline{Contraejemplo}: }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+        Universidad Nacional Autónoma de México\\
+        Facultad de Ciencias\\
+        Álgebra Moderna I\\
+    \vspace{.5cm}
+    \large
+        \textbf{Tarea 1}
+}
+\author{
+    Ángel Iván Gladín García\\
+    No. cuenta: 313112470\\
+    \texttt{angelgladin@ciencias.unam.mx}
+}
+\date{5 de Febrero 2019}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Teorema}
+\newtheorem{example}{Ejemplo}
+\newtheorem{corollary}{Corolario}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definicion}
+\newtheorem{prop}{Proposicion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Ejercicio 1.}
+
+\begin{enumerate}[label=\alph*)]
+    \item Sea $\alpha = (i_0 \ i_1 \ \cdots \ i_{r-1})$ un $r$-ciclo. Para cualquier $i,k \geq 0$, pruebe que
+    $\alpha^k(i_j) = i_{k+j}$.
+    \begin{proof}
+        Notemos que $\alpha^k$ es la composición de $\alpha$ $k$-veces. Haciendo la siguiente observación de que
+        $i_{j+1} = \alpha(i_{j})$, $i_{j+2} = \alpha(i_{j+1}) = \alpha(\alpha(i_{j})) = \alpha^2(i_{j})$,
+        $i_{j+3} = \alpha(i_{j+2}) = \alpha(\alpha^2(i_{j})) = \alpha^3(i_{j})$ y así para toda
+        $k \leq r-1$, (cabe hacer la observación de que el subíndice de $i$, que es $j + l$ para
+        algún $l$ se toma $j + l$ módulo $r$) construyendo así hasta $k$ se sigue que,
+        \[
+            i_{j+k} = \alpha^k(i_j)
+        \]
+        Como $\alpha(i_{j-1}) = i_j$, se puede ver que $i_{j+k} = \alpha^k(i_j)$ si el
+        subíndice $j+k$ de $i$ es tomado módulo $r$.
+    \end{proof}
+
+    \item Pruebe que si $\alpha$ es un $r$-ciclo, entonces $\alpha^r = 1$, pero que $\alpha^k \not= 1$ para
+    cualquier entero positivo $k < r$.
+    \begin{proof}
+        Sea $\alpha$ una permutación de la forma $\alpha = (i_0 \ i_1 \ \cdots \ i_{r-1})$, tenemos por el inciso
+        anterior previamente demostrado que dada una premutación $\beta$ se tiene que $\beta^k(i_j) = i_{k+j}$.
+        Entonces si tomamos un $j$ tal que $0 \leq j < r$, se sigue que $\alpha^r(i_j) = i_{r+j} = i_{j}$ (esto pasa porque
+        $r+j = j$ en $\Z_{r}$), lo que significa que $\alpha$ deja fijos a los elementos. Ergo $\alpha^r = 1$.
+
+        Para demostrar que $\alpha^k \not= 1$ para cualquier entero positivo $k < r$, tomemos un $j$ tal que $0 \leq j < r$,
+        entonces $\alpha^k(i_j) = i_{j+k}$, y como por hipótesis $k < r$ entonces $i_k \not= i_{j+k}$.
+        Por tanto $\alpha^k \not= 1$.
+    \end{proof}
+
+    \item Si $\alpha = \beta_1 \beta_2 \cdots \beta_m$ es un producto de $r_i$-ciclos $\beta_i$ disjuntos, entonces
+    el más pequeño entero positivo $l$ con $\alpha^l = 1$ es el mínimo cómun múltiplo de
+    $\{ r_1, r_2, \ldots, r_m \}$.
+    \begin{proof}
+        Como por hipótesis los $\beta_i$ son disjuntos, podemos usar el hecho de que conmutan para poder hacer lo siguiente,
+        \[
+            \alpha^n = (\beta_1 \beta_2 \cdots \beta_m)^n = \beta_1^n \beta_2^n \cdots \beta_m^n
+        \]
+        para toda $n \in \Z$. Supongamos que $\alpha^n = 1$ si y sólo si $\beta_i^n = 1$ para $1 \leq i \leq m$,
+        Como $\alpha$ es un $n$-ciclo y $\beta_i$ es un $r_i$-ciclo, se sigue que que todo $r_i$ divide a $n$, y éso
+        a su vez implica que el $m.c.m.(r_1, r_2, \ldots, r_m) \mid n$. Como $\beta_i^n = 1$ para $1 \leq i \leq m$ 
+        justo aseguramos que $n$ es el entero más pequeño. Renombrando a $m.c.m.(r_1, r_2, \ldots, r_m) = l = n$,
+        se sigue que $l$ es el entero mas pequeño positivo tal que $\alpha^l = 1$.
+    \end{proof}
+\end{enumerate}
+
+\subsection*{Ejercicio 2.}
+Sea $p$ un primo y sea $\alpha \in S_n$. Si $\alpha^p = 1$, entonces o bien $\alpha = 1$, $\alpha$
+es un $p$-ciclo, o $\alpha$ es un producto de $p$-ciclos disjuntos. En particular, so $\alpha^2 = 1$,
+entonces o bien $\alpha = 1$, $\alpha$ es una transposición o $\alpha$ es un producto de transposiciones
+disjuntas.
+\begin{proof}
+    Por casos. Si $\alpha^p = 1$ entonces,
+    \begin{enumerate}
+        \item $\alpha = 1$.
+        
+        Si descomponemos a $\alpha$ como producto de dos ciclos disjuntos (esto porque como $p$ es primo)
+        quedando así como $\alpha = \beta_1 \ \beta_2$ donde $\beta_1 = id$ y $\beta_2 = (1 \ 2 \ \cdots \ p) = \alpha$,
+        entonces $\alpha^p = (\beta_1 \ \beta_2)^p = \beta_1^p \ \alpha^p = id \ \alpha_2^p$, por el inciso $1.2)$ podemos
+        podemos expresar a la identidad como $\alpha^p$, entonces se sigue que $\alpha^p = \alpha \cdot \alpha^p = \alpha^{p+1}$
+        y multiplicando por $\alpha^{-p}$ la igualdad se sigue que $\alpha^{-p} \cdot \alpha^p = \alpha^{-p} \cdot \alpha^{p+1}$
+        teniendo así que $id = \alpha^p$.
+
+        \item $\alpha$ es un $p$-ciclo.
+        
+        Análogo al anterior.
+
+        \item $\alpha$ es un producto de $p$-ciclos disjuntos.
+        
+        Por el inciso $1.a)$ sabemos que $\alpha^p(i_k) = i_{k+p} = i_k$ lo que significa que lo deja fijos
+        a todos los elementos,
+        también podemos expresar $p$-ciclos disjuntos de la forma $id = (1)(2)\cdots(p)$, y ambos los dejan fijos
+        a los $i's$, por lo que ambos son la tienen la misma regla de correspondecia.
+    \end{enumerate}
+\end{proof}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{gato.jpeg}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
