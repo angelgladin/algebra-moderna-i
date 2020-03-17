@@ -1,0 +1,198 @@
+%%%
+ %
+ % Copyright (C) 2020 Ángel Iván Gladín García
+ %
+ % This program is free software: you can redistribute it and/or modify
+ % it under the terms of the GNU General Public License as published by
+ % the Free Software Foundation, either version 3 of the License, or
+ % (at your option) any later version.
+ %
+ % This program is distributed in the hope that it will be useful,
+ % but WITHOUT ANY WARRANTY; without even the implied warranty of
+ % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ % GNU General Public License for more details.
+ %
+ % You should have received a copy of the GNU General Public License
+ % along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{commath}
+
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage{longtable}
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\usepackage{import}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{color}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Pro}{\mathds{P}}
+\newcommand{\Oh}{\mathcal{O}} %% Notacion "O"
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\sol}{\textbf{\underline{Solución}: }} %% Solucion
+\newcommand{\af}{\textbf{\underline{Afirmación}: }}
+\newcommand{\cej}{\textbf{\underline{Contraejemplo}: }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+        Universidad Nacional Autónoma de México\\
+        Facultad de Ciencias\\
+        Álgebra Moderna I\\
+    \vspace{.5cm}
+    \large
+        \textbf{Tarea 4}
+}
+\author{
+    Ángel Iván Gladín García\\
+    No. cuenta: 313112470\\
+    \texttt{angelgladin@ciencias.unam.mx}
+}
+\date{12 de Marzo 2020}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Teorema}
+\newtheorem{example}{Ejemplo}
+\newtheorem{corollary}{Corolario}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definicion}
+\newtheorem{prop}{Proposicion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Ejercicio 1.}
+Sea $G$ un grupo y $H$ un subgrupo de $G$ de índice igual a 2. Demuestre que $H$ es un subgrupo
+normal de $G$.
+\begin{proof} Por contradicción.
+    Es suficiente con probar que que si $h \in H$, entonces el conjugado $ghg^{-1} \in H$ para cada
+    $g \in G$ (esto es para mostrar que $H \lhd G$).
+
+    Como $H$ tiene ínidice 2, hay exactamente dos clases laterales, las cuales son $H$ y $aH$, donde
+    $a \notin H$. Ahora, o bien $g \in G$ ó $g \in aH$.
+
+    Si $g \in H$, entonces $ghg^{-1} \in H$ porque $H$ es un subgrupo.
+
+    En el segundo caso, escribimos a $g = ax$, donde $x \in H$. Entonces\\
+    $ghg^{-1} = (ax)h(ax)^{-1} = a(xhx^{-1})a^{-1} = ah'a^{-1}$, donde $h' = xhx^{-1} \in H$ 
+    (donde $h'$ es un producto de tres elementos en $H$). Si $ghg^{-1} \notin H$, entonces
+    $ghg^{-1} = ah'a^{-1} \in aH$, que es $ah'a^{-1} = ay$ para alguna $y \in H$. Cancelando
+    $a$, tenemos $h'a^{-1} = y$, que da la contradicción $a = y^{-1}h' \in H$.
+
+    Por tanto, si $h \in H$, cada conjugado de $h$ también vive en $H$, que es que $H$ se un
+    subgrupo normal de $G$.
+\end{proof}
+
+Muestre mediante un ejemplo que si el índice de $H$ es mayor que dos, entonces $H$ no necesariamente
+es normal en $G$.
+
+Sea $G = S_3$ y $H = \{ 1, (1 \ 2) \}$ un subgrupo de índice 3. Entonces
+$(1 \ 2 \ 3)H = \{ (1 \ 2 \ 3), (1 \ 3) \}$ y $H(1 \ 2 \ 3) = \{ (1 \ 2 \ 3), (1 \ 2) \}$,
+por tanto $(1 \ 2 \ 3) H \not= H(1 \ 2 \ 3)$ y $H$ no es normal.
+
+
+\subsection*{Ejercicio 2.}
+Sea $G$ un grupo y $H$ un subgrupo de $G$ de índice igual a 2. Muestre que
+$a^2 \in H$ para todo $a \in G$.
+
+\begin{proof} Por contradicción, suponer que $a^2 \notin G$.
+    
+    Como $H$ tiene ínidice 2, entonces hay exactamente dos clases laterales, las cuales son $H$ y
+    $aH$, donde $a \notin H$. Por tanto $G$ es la unión disjunta $G = H \sqcup aH$. Tomemos $g \in G$
+    con $g \notin H$ de forma que $g = ah$ para alguna $h \in H$.
+
+    Si $g^2 \notin H$, entonces $g^2 = ah'$, donde $h' \in H$. Teniendo así que,
+
+    \[ g = g^{-1}g^2 = (ah)^{-1}ah' = h^{-1}a^{-1}ah' = h^{-1}h' \in H \]
+
+    lo cual es una contradicción por suponer que $g^2 \notin G$.
+\end{proof}
+
+\subsection*{Ejercicio 3.}
+Muestre que si $H \leq G$, entonces $H$ es normal en $G$ si y sólo si para todo
+$x, y \in G$, $xy \in H$ si y sólo si $yx \in H$.
+\begin{proof}
+\hfill
+\begin{itemize}
+    \item[$\Longleftarrow)$] Asumimos que $H$ es un subgrupo normal de G.
+
+    Entonces por definición de grupo normal tenemos que $h \in H$ y $g \in G$ entonces
+    $ghg^{-1} \in H$.
+    
+    Tomemos $x, y \in G$ y $xy \in H$. Como $H$ es un subgrupo normal y $y \in G$, se sigue que,
+    \[ y(xy)y^{-1} = yx(yy^{-1}) = yx \in H \]
+
+    De manera análoga, $yx \in H$ y $x \in G$, se sigue que,
+    \[ x(yx)x^{-1} = xy(xx^{-1}) = xy \in H \]
+
+    \item[$\Longrightarrow)$] Asuminmos que para todo $x, y \in G$, $xy \in H$ si
+    y sólo si $yx \in G$.
+
+    Sea $a = yx \in H$, entonces,
+    \begin{align*}
+        a = yx\\
+        xa = x(yx)\\
+        (xa)x^{-1} = (xyx)x^{-1}\\
+        xax^{-1} = xy
+    \end{align*}
+    Entonces vemos que $xy$ se puede escribir de la forma $xax^{-1}$ para toda $x \in G$
+    y $a \in H$. Por tanto $H \lhd G$.
+\end{itemize}
+\end{proof}
+
+\subsection*{Ejercicio 4.}
+Demuestre que $A_n$ es un subgrupo normal de $S_n$.
+\begin{proof}
+    Como $[S_n : A_n] = \frac{|S_n|}{|A_n|} = \frac{n!}{n!/2} = 2$ y por el ejercicio 1, se tiene que
+    si $[S_n : A_n] = 2$ entonces $A_n \lhd S_n$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
