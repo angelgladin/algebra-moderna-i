@@ -1,0 +1,192 @@
+%%%
+ %
+ % Copyright (C) 2020 Ángel Iván Gladín García
+ %
+ % This program is free software: you can redistribute it and/or modify
+ % it under the terms of the GNU General Public License as published by
+ % the Free Software Foundation, either version 3 of the License, or
+ % (at your option) any later version.
+ %
+ % This program is distributed in the hope that it will be useful,
+ % but WITHOUT ANY WARRANTY; without even the implied warranty of
+ % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ % GNU General Public License for more details.
+ %
+ % You should have received a copy of the GNU General Public License
+ % along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper]{article}
+\usepackage[margin=.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{commath}
+
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage{longtable}
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\usepackage{import}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Pro}{\mathds{P}}
+\newcommand{\Oh}{\mathcal{O}} %% Notacion "O"
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\sol}{\textbf{\underline{Solución}: }} %% Solucion
+\newcommand{\af}{\textbf{\underline{Afirmación}: }}
+\newcommand{\cej}{\textbf{\underline{Contraejemplo}: }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+    \vspace{-2.2em}
+        Universidad Nacional Autónoma de México\\
+        Facultad de Ciencias\\
+        Álgebra Moderna I\\
+    \vspace{.5cm}
+    \large
+        \textbf{Tarea 7}
+}
+\author{
+    Ángel Iván Gladín García\\
+    No. cuenta: 313112470\\
+    \texttt{angelgladin@ciencias.unam.mx}
+}
+\date{20 de Marzo 2020}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Teorema}
+\newtheorem{example}{Ejemplo}
+\newtheorem{corollary}{Corolario}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definicion}
+\newtheorem{prop}{Proposicion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Ejercicio 1. (50 puntos)}
+Si $n \neq 4$, demuestre que $A_n$ es el único subgrupo normal propio no trivial de $S_n$.
+
+\begin{proof}
+El grupo $A_3$ puede verse fácilmente que es simple. Cuando $n = 4$ tenemos el subgrupo normal
+$\{ 1, (12)(34), (13)(24), (14)(23) \}$ en $A_4$, teniendo así que $A_4$ no es simple.
+
+Asumamos que $n \geq 5$.
+
+\textbf{Paso 1} $A_n$ es generado por 3-ciclcos.
+
+De hecho cualquier elemento de $A_n$ es un producto de transposiciones de la forma $(ab)(cd)$ o $(ab)(ac)$.
+Como $(ab)(cd) = (acb)(acd)$ y $(ab)(ac)=(acb)$ concluimos que $A_n$ es generado por los 3-ciclos.
+Ademas $(1a2)=(12a)^{-1}$, $(1ab)=(12b)(12a)^{-1}$, $(2ab)=(12b)^{-1}(12a)$, y
+$(abc)=(12a)^{-1}(12c)(12b)^{-1}(12a)$, los que muestra que cada 3-ciclo es generado por un ciclo de la
+forma $(12k)$.
+
+
+\textbf{Paso 2} Si $H$ es un subgrupo normal de $A_n$. $H$ contiene un 3-ciclo, entonces $H = A_n$.
+
+Sin pérdida de generalidad $(123) \in H$, Entonces
+$(12k) = ((12)(3k))(123)^{-1}((12)(3k))^{-1} = ((123)^{-1})^{(12)(3k)} \in H$ por normalidad. Así
+$A_n = \langle (12k) \ : \ k \geq 3 \rangle \leq H$, y $H = A_n$.
+
+Supongamos que $H \neq 1$ es normal en $A_n$, entonces debemos exhibir que $H$ necesariamente contiene un
+3-ciclo. Luego usamos el paso 2 para concluir la demostración. Por casos:
+\begin{enumerate}
+    \item Sin perdida de generalidad suponer que $H$ contiene a $\sigma = (1 2 \cdots r)\tau$, donde
+    $r \geq 4$, y $\tau$ es disjunto de $\{ 1,2,\ldots,r \}$. Entonces por normalidad de $H$, $H$ contiene
+    $\sigma^{-1}\sigma^{(123)} = (12r)$. Y acabamos con el paso 2.
+
+    \item Supongamos sin perdida de generalidad $\sigma = (123)(456)\tau \in H$, donde $\tau$ es el
+    producto de transposiciones disjuntas. Entonces $H$ contiene $\sigma^{-1}\sigma^{(124)} = (14263) = (12r)$
+    y acabamos con el paso 1.
+
+    \item Supongamos sin perdida de generalidad que $(123)\tau \in H$, con $\tau$ un producto de
+    transposiciones disjuntas, entonces $H$ contiene a $(123)\tau(123)\tau = (132)$, y acabamos con el paso 2.
+
+    \item Supongamos que $H$ contiene elementos que son productos de transposiciones disjuntas. Sin pérdida de
+    generalidad sea $(12)(34)\tau$ sea un elemento de $H$. Entonces
+    $(12)(34)\tau((12)(34)\tau)^{(123)} = (13)(24) \in H$. Como $n \geq 5$, consideremos $(123) \in A_n$. Por
+    normalidad $H$ contiene a $(13)(24)((13)(24))^{(135)} = (135)$ y acabamos con el paso 2.
+\end{enumerate}
+
+
+\end{proof}
+
+\subsection*{Ejercicio 2. (50 puntos)}
+Demuestre que si $G \leq S_n$ contiene una permutación impar, entonces $|G|$ es par y exactamente la mitad
+de los elementos de $G$ son permutaciones impares.
+
+\begin{proof}
+Supongamos que $G$ es un subgrupo de $S_n$. Notemos que $G$ contiene a la permutación identidad, la cual es
+par, así $G$ no consiste de entéramente de permutaciones impares. Si pasara que todos los elementos de $G$
+son pares, entonces ya acabaríamos.
+
+En consecuenciua supongamos algunos elementos de $G$ son par y otros impar. Sea $E$ el conjunto de
+permutaciones pares en $G$, y sea $O$ el conjunto de permutaciones impares. Ahora queremos demostrar que
+$E$ y $O$ tienen la misma cardinalidad, lo que significa que queremos exhibir una biyección $\varphi : E \to O$.
+
+Escojamos una permutación impar $\sigma \in O$, y definamos $\varphi$ por la regla $\varphi(x) = \sigma x$.
+Notemos que esta función tiene sentido. Si $x \in E$, entonces $x$ es par, y como $\sigma$ es impar,
+$\varphi(x) = \sigma x$ es impar. Además, como $x$ y $\sigma$ están en $G$, entonces $\varphi(x)=\sigma x$
+están en $G$ también porque $G$ es cerrado. Por consiguiente, $\varphi$ manda permutaciones pares en $G$ a
+permutaciones impares en $G$.
+
+Para ver que $\varphi$ es uno a uno, supongamos $\varphi(\tau) = \varphi(\mu)$. Que significa
+$\sigma \tau = \sigma \mu$, entonces $\tau = \mu$ por cancelación en $S_n$. Por tanto $\varphi$ es uno
+a uno.
+
+Para ver que es suprayectiva, sea $\mu$ una permutación arbitraria en $O$. Entonces $\sigma^{-1}\mu$ es una
+permutación par, y está en $G$ porque ambas $\sigma$ y $\mu$ están en $G$. Por consiguiente
+$\sigma^{-1}\mu \in E$. Observemos que $\varphi(\sigma^{-1}\mu) = \sigma \sigma^{-1} \mu = \mu$ y se sigue
+que $\varphi$ es suprayectiva.
+
+Esto completa la demostración de que hay una función biyectiva $\varphi : E \to O$, así $|E| = |O|$. Por tanto
+la mitad de las permutaciones de $G$ son pares y la otra mitad son impares.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 
