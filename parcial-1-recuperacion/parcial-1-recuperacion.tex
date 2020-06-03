@@ -1,0 +1,220 @@
+%%%
+ %
+ % Copyright (C) 2020 Ángel Iván Gladín García
+ %
+ % This program is free software: you can redistribute it and/or modify
+ % it under the terms of the GNU General Public License as published by
+ % the Free Software Foundation, either version 3 of the License, or
+ % (at your option) any later version.
+ %
+ % This program is distributed in the hope that it will be useful,
+ % but WITHOUT ANY WARRANTY; without even the implied warranty of
+ % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ % GNU General Public License for more details.
+ %
+ % You should have received a copy of the GNU General Public License
+ % along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper]{article}
+\usepackage[margin=.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{commath}
+
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage{longtable}
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{verbatim}
+\usepackage{wasysym}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\usepackage{import}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{color}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Pro}{\mathds{P}}
+\newcommand{\Oh}{\mathcal{O}} %% Notacion "O"
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\sol}{\textbf{\underline{Solución}: }} %% Solucion
+\newcommand{\af}{\textbf{\underline{Afirmación}: }}
+\newcommand{\cej}{\textbf{\underline{Contraejemplo}: }}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+    \vspace{-2.2em}
+        Universidad Nacional Autónoma de México\\
+        Facultad de Ciencias\\
+        Álgebra Moderna I\\
+    \vspace{.5cm}
+    \large
+        \textbf{Primer examen parcial de recuperación}
+}
+\author{
+    Ángel Iván Gladín García\\
+    No. cuenta: 313112470\\
+    \texttt{angelgladin@ciencias.unam.mx}
+}
+\date{3 de junio de 2020}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Teorema}
+\newtheorem{example}{Ejemplo}
+\newtheorem{corollary}{Corolario}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definicion}
+\newtheorem{prop}{Proposicion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Ejercicio 1. (25 puntos)}
+Pruebe que si $\alpha = \beta_1 \beta_2 \cdots \beta_m$ es un producto de $r_i$-ciclos disjuntos $\beta_i$,
+entonces el entero positivo $s$ más pequeño con $\alpha^s = 1$ es el mínimo cómun múltiplo de
+$\{ r_1, r_2, \ldots, r_m \}$.
+
+\begin{proof}
+Como por hipótesis los $\beta_i$ son disjuntos, podemos usar el hecho de que conmutan para poder hacer lo siguiente,
+\[
+    \alpha^n = (\beta_1 \beta_2 \cdots \beta_m)^n = \beta_1^n \beta_2^n \cdots \beta_m^n
+\]
+para toda $n \in \Z$. Supongamos que $\alpha^n = 1$ si y sólo si $\beta_i^n = 1$ para $1 \leq i \leq m$.
+Como $\alpha$ es un $n$-ciclo y $\beta_i$ es un $r_i$-ciclo, se sigue que que todo $r_i$ divide a $n$, y éso
+a su vez implica que el $m.c.m.(r_1, r_2, \ldots, r_m) \mid n$. Como $\beta_i^n = 1$ para $1 \leq i \leq m$ 
+justo aseguramos que $n$ es el entero más pequeño. Renombrando a $m.c.m.(r_1, r_2, \ldots, r_m) = s = n$,
+se sigue que $s$ es el entero mas pequeño positivo tal que $\alpha^s = 1$.
+\end{proof}
+
+\subsection*{Ejercicio 2. (25 puntos)}
+Sea $S$ un subconjunto no vacío de un grupo $G$ y definimos una relación en $G$ dado por $a \sim b$ si y
+sólo si $ab^{-1} \in S$. Muestre que $\sim$ es una relación de equivalencia si y sólo si $S$ es un subgrupo
+de $G$.
+
+\begin{proof}
+\hfill
+\begin{itemize}
+    \item \textbf{Reflexividad:} Como $aa^{-1} = 1 \in S$, por tanto $a \sim a$.
+
+    \item \textbf{Simetría:} Se tiene que $a \sim b$, entonces $ab^{-1} \in S$, entonces $(ab^{-1})^{-1} \in S$,
+    de ahí que $ba^{-1} \in S$. Por tanto $b \sim a$.
+
+    \item \textbf{Transitividad:} Si $a \sim b$ y $b \sim c$, se tiene que $ab^{-1} \in S$ y $bc^{-1} \in S$, pero se
+    tiene que $(ab^{-1})(bc^{-1}) \in S$, lo cual implica que $ac^{-1} \in S$. Por tanto $a \sim c$.
+\end{itemize}
+
+Se asumió que $S$ era un subgrupo de $G$ por un teorema\footnote{
+    \textbf{Teorema 2.2} \emph{Un subconjunto $S$ de un grupo $G$ es un subgrupo si y sólo si $1 \in S$ y
+    $s, t \in S$ implica que $st^{-1} \in S$}
+} visto en clase.
+\end{proof}
+
+\subsection*{Ejercicio 3. (25 puntos)}
+Demuestra el Teorema de Wilson: Si $p$ es un primo, entonces
+\[
+    (p - 1)! \equiv -1 \mod p
+\]
+
+\begin{proof}
+Consideremos el grupo $G$ de elementos no cero de $\Z_p$ forma un grupo multiplicativo como
+$G = ((\Z/p\Z)^\times, \cdot)$ donde $(\Z/p\Z)^\times = \{ [1], [2], \ldots, [p-1] \}$ y $(\cdot)$
+como el producto en $\Z$, también se tiene que $G$ es abeliano por $\Z$.
+
+Observemos que como $p$ es primo y sea $x \in (\Z/p\Z)^\times$ tal que $x^2 = 1$ si tiene que:
+\begin{align*}
+    &\qquad\quad x^2 \equiv 1 \mod p\\
+    &\iff x^2 -1 \equiv 0 \mod p\\
+    &\iff (x+1)(x-1) \equiv 0 \mod p\\
+    &x = np \pm 1
+\end{align*}
+Concluyendo así que $x = 1$ ó $x = p-1$.
+
+Tambien observando que se cumple que $(p-2)! \equiv 1 \mod p$.
+
+Por tanto,
+\[
+    (p-1)! \equiv (p-2)! \cdot (p-1) \equiv -1 \mod p
+\]
+\end{proof}
+
+\subsection*{Ejercicio 4. (25 puntos)}
+Un grupo $G$ es abeliano si y sólo si la función $\varphi : G \to G$ dada por $\varphi(g) = g^{-1}$
+es un automorfismo\footnote{Un automorfismo de un grupo $G$ es un isomorfismo $\varphi : G \to G$.}.
+
+\begin{proof}
+\hfill
+\begin{itemize}
+    \item[$(\Longrightarrow)$] Supongamos que $G$ es abeliano. Sean $g, h \in G$. Si $\varphi(g) = \varphi(h)$,
+    entonces se tiene que $g^{-1} = h^{-1}$, lo que implica que $g = h$ provando así que $\varphi$ es inyectiva.
+
+    Sea $g \in G$, se tiene que $g^{-1} \in G$ y $\varphi(g^{-1}) = (g^{-1})^{-1} = g$ teniendo así que $\varphi$ es
+    suprayectiva.
+
+    Para concluir, sean $g, h \in G$ se sigue que:
+    \begin{align*}
+        \varphi(gh)
+            &= (gh)^{-1} = h^{-1}g^{-1}\\
+            &= g^{-1}h^{-1} && \text{Por ser $G$ abeliano.}\\
+            &= \varphi(g)\varphi(h)
+    \end{align*}
+    Teniendo así que $\varphi$ es un automorfismo.
+
+    \item[$(\Longleftarrow)$] Supongamos que la función $\varphi : G \to G$ dada por $\varphi(g) = g^{-1}$
+    es un automorfismo. Sean $g, h \in G$, entonces:
+    \begin{align*}
+        h^{-1}g^{-1}
+            &= (gh)^{-1}\\
+            &= \varphi(gh)\\
+            &= \varphi(g)\varphi(h) && \text{Por ser $\varphi$ un homomorfismo.}\\
+            &= g^{-1}h^{-1}
+    \end{align*}
+    Lo que implica que $gh = hg$. Como $g, h \in G$ fueron arbitrarios, se concluye que $G$ es abeliano.
+\end{itemize}
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 

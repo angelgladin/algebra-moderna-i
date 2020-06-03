@@ -84,14 +84,14 @@
         Álgebra Moderna I\\
     \vspace{.5cm}
     \large
-        \textbf{Tarea 8}
+        \textbf{Tarea-examen \emph{Teoremas de Sylow}}
 }
 \author{
     Ángel Iván Gladín García\\
     No. cuenta: 313112470\\
     \texttt{angelgladin@ciencias.unam.mx}
 }
-\date{28 de Abril 2020}
+\date{27 de Mayo 2020}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,53 +105,50 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Ejercicio 1. (40 puntos)}
-Demuestre que $S_n$\footnote{Con $n > 4$.} no tiene subgrupos de índice $t$ con $2 < t < n$.
+\subsection*{Ejercicio 1. (25 puntos)}
+Sea $H$ un subgrupo normal de $G$. Si ambos $H$ y $G/H$ son $p$-grupos, entonces $G$ es un $p$-grupo.
 \begin{proof}
-Sea $G = S_n$ y $A_n$ el grupo alternante de grado $n$ (el cual es simple). Sabemos que el único subgrupo no
-trivial de $G$ es $A_n$. Sea $H \leq G$ y $G/H$ el conjunto de las clases laterales izquierdas de $H$. Sea
-$S_{G/H}$ el grupo simétrico en $G/H$ y $f : G \to S_{G/H}$ el homomorfismo inducido por los donjugados de $G$
-en $G/H$. Sea $N$ el kernel de $f$, entones $N$ es un subgrupo de $H$. Ya que $|G| = n!$ y $S_{G/H} = m!$,
-$f$ no puede ser inyectiva. Entonces el único grupo normal no tricial de $G$ es $A_n$, entonces $N = A_n$.
-Por tanto $[G : N] = 2$ y $H = N$ y de ahí que $t = 2$.
+Sea $g \in G$ y sea $gH \in G/H$. Como $G/H$ por hipótesis es un $p$-grupo entonces\footnote{
+    \textbf{Corolario 4.3} \emph{Un grupo finito $G$ es un $p$-grupo si y solo si $|G|$ es una potencia de $p$.}
+} $|gH| = p^n$ para algún $n > 0$. Por tanto $(gH)^{p^n} = H$ y así $g^{p^n} \in H$.
+
+Como $H$ es un $p$-grupo, para algún $m > 0$ se tiene que $\left(g^{p^n}\right)^{p^m} = g^{p^{n+m}}=1$, y así se
+concluye que $G$ es un $p$-grupo.
 \end{proof}
 
-\subsection*{Ejercicio 2. (30 puntos)}
-Demuestre que $A_6$ no tiene subgrupos de índice primo.
+\subsection*{Ejercicio 2. (25 puntos)}
+Demuestre que cualquier grupo de orden 200 contiene un subgrupo de Sylow normal.
 \begin{proof}
-Sea $A_6$ es un grupo simple\footnote{Se demostró en la tarea pasada.} de orden $360 = 2^2 \cdot 3^2 \cdot 5$.
-Si $H$ fuera un subgrupo de índice primo entonces $[A_6 : H] = 2,3,5$. Por la generalización del teorema de
-Cailey\footnote{\emph{\textbf{Teorema 3.14}. Si $H \leq G$ y $[G : H] = n$, entonces hay un homomorfismo
-$\rho : G \to S_n$ con $\ker \rho \leq H$.}} entonces hay un homomorfismo $\varphi : A_6 \to S_n$ con
-$n = 2,3,5$ con $\varphi \subset H$, en particular $\ker \varphi$ es un subgrupo normal de $A_6$ con
-$\ker \varphi \neq A_6$. Como $A_6$ es simple, $\ker \varphi = 1$ y $\varphi$ es inyectiva. Pero esto es
-imposible porque $|S_5| = 120 < 360$.
+Sea $|G| = 200 = 2^3 \cdot 5^2$. Por el terorema de Sylow\footnote{
+    \textbf{Teorema 4.12 (Sylow) (ii)} \emph{Si hay $r$ $p$-subgrupos de Sylow, entonces $r \mid |G|$ y
+    $r \equiv 1 \mod p$.}
+} consideremos $r_p$ el número de de $p$-subgrupos de Sylow. Entonces $r_5 = 1$. Por tanto hay un único
+5-subgrupo de Sylow $P$. Como cualquier conjugado de $P$ es también un conjugado de $P$ es también un
+5-subgrupo de Sylow, se concluye que $gPg^{-1} = P$ para toda $g \in G$ y así $P \lhd G$.
 \end{proof}
 
-\subsection*{Ejercicio 3. (30 puntos)}
-Sea $G$ un grupo simple \emph{infinito}. Demuestre que
-\begin{enumerate}
-\item Todo $x \in G$ con $x \neq 1$ tiene una cantidad infinita de conjugados.
+\subsection*{Ejercicio 3. (25 puntos)}
+Si $P$ es un $p$-subgrupo de Sylow normal de un grupo finito $G$ y $f : G \to G$ es un morfismo de grupos,
+entonces $f(P) < P$.
 \begin{proof}
-Por contrapositiva. Si tiene una cantidad finita de conjugados, entonces $G$ no es simple.
-
-Sea $X$ denotado como el conjunto finito de conjugados de $x$ y sea $S_X$ el grupo simétrico de $X$. Sea
-$\phi : G \to S_n$ el homomorfismo definido como sigue. Para $g \in G$, $\phi(g)$ es la permutación de $X$ que
-toma $y \in X$ a $gyg^{-1}$. Verifiquemos que es inyectiva y que $\phi$ sea un homomorfismo.
-
-Sea $H = \ker \phi$. Entonces $H$ es un subrupo normal de $G$. Si $H \neq 1$ y $H \neq G$, entonces $G$ no es
-simple.
-Si $H = 1$, entonces $\phi$ es inyectiva de un grupo infinito $G$ a un grupo finito $S_X$, lo cual es imposible.
-Si $H = G$, entonces implica que $x \in Z(G)$. Como $x \neq e$, implica que $Z(G)$ es no trivial. Ya que
-$Z(G)$ es un subrupo normal de de $G$, si $Z(G) \neq G$ entonces $G$ no es simple.
-De lo contrario, $G$ sería conmutativo y un grupo conmutativo infinito no es simple.
+Notemos que $P \leq G$ y como la imagen de homomorfismos de un grupo también es un grupo, entonces $f(P) \leq G$.
+Sea $y \in f(P)$. Entonces existe $x \in P$ tal que $f(x) = y$. Como $P$ es un $p$-subgrupo entonces
+$|x| = p^i$ para alguna $i$. Entonces se tiene que $y^{p^i} = f(x)^{p^i} = f(x^{p^i}) = f(1) = 1$.
+Entonces $|y|$ divide a $p^i$ y así $|y| = p^j$ para algún $j \leq i$. Como la $y$ fue arbitraria $f(P)$
+es un $p$-subgrupo de $G$. Por el teorema de Sylow\footnote{
+    \textbf{Teorema 4.12 (Sylow) (i)} \emph{Si $P$ es un $p$-subgrupo de Sylow de un subgrupo finito $G$,
+    entonces todos los $p$-subgrupos de $G$ son conjugados de $P$.}
+} entonces existe $x \in G$ tal que $f(P) \leq xPx^{-1} = P$.
 \end{proof}
 
-\item Todo subgrupo propio $H \neq 1$ tiene una cantidad infinita de conjugados.
+\subsection*{Ejercicio 4. (25 puntos)}
+Si $Q$ es un $p$-subgrupo normal de un grupo finito $G$, entonces $Q \leq P$ para cualquier $p$-subgrupo
+de Sylow $P$.
 \begin{proof}
-\Large{\frownie}
+Por Sylow $Q$ está contenido en un $p$-subgrupo de Sylow $H$ de $G$. Por el teorema de Sylow, $P = xHx^{-1}$
+para alguna $x \in G$. Así $Q = xQx^{-1} \leq xHx^{-1} = P$.
 \end{proof}
-\end{enumerate}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

@@ -84,14 +84,14 @@
         Álgebra Moderna I\\
     \vspace{.5cm}
     \large
-        \textbf{Tarea 8}
+        \textbf{Tarea 9}
 }
 \author{
     Ángel Iván Gladín García\\
     No. cuenta: 313112470\\
     \texttt{angelgladin@ciencias.unam.mx}
 }
-\date{28 de Abril 2020}
+\date{13 de Mayo 2020}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,53 +105,64 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Ejercicio 1. (40 puntos)}
-Demuestre que $S_n$\footnote{Con $n > 4$.} no tiene subgrupos de índice $t$ con $2 < t < n$.
+\subsection*{Ejercicio 1. (25 puntos)}
+Sean $X$ un $G$-conjunto, $x, y \in X$ y $g \in G$. Supongamos que $y = gx$. Demuestre que
+$G_y = gG_x g^{-1}$; concluya que $|G_x| = |G_y|$.
+
 \begin{proof}
-Sea $G = S_n$ y $A_n$ el grupo alternante de grado $n$ (el cual es simple). Sabemos que el único subgrupo no
-trivial de $G$ es $A_n$. Sea $H \leq G$ y $G/H$ el conjunto de las clases laterales izquierdas de $H$. Sea
-$S_{G/H}$ el grupo simétrico en $G/H$ y $f : G \to S_{G/H}$ el homomorfismo inducido por los donjugados de $G$
-en $G/H$. Sea $N$ el kernel de $f$, entones $N$ es un subgrupo de $H$. Ya que $|G| = n!$ y $S_{G/H} = m!$,
-$f$ no puede ser inyectiva. Entonces el único grupo normal no tricial de $G$ es $A_n$, entonces $N = A_n$.
-Por tanto $[G : N] = 2$ y $H = N$ y de ahí que $t = 2$.
+\hfill
+\begin{itemize}
+    \item[$(\subseteq)$]
+    Si $a \in G_y$, entonces $a y = y$. Sabemos que $y = g x$, entonces
+    \[
+        y = g x = g a x = g a (g^{-1} g) x = g a g^{-1} y
+    \]
+    Por tanto $g a g^{-1}$ fija a $y$, y así $g G_x g^{-1} \leq G_y$.
+
+    \item[$(\supseteq)$]
+    Si $a \in g G_x g^{-1}$, entonces $agxg^{-1} = gxg^{-1}$. Sabemos que $x = g^{-1} y$, entonces
+    \[
+        x = g^{-1} y = (agyg^{-1})^{-1} y = g^{-1} a g x 
+    \]
+    Por tanto $g^{-1} a g$ fija a $x$, y así $G_y \leq g G_x g^{-1}$.
+\end{itemize}
+Si $x$ y $y$ están en la misma órbita, entonces hay un $g \in G$ con $y = gx$ y de ahí
+\[
+    |G_y| = |G_{gx}| = |g G_y g^{-1}| = |G_x|
+\]
 \end{proof}
 
-\subsection*{Ejercicio 2. (30 puntos)}
-Demuestre que $A_6$ no tiene subgrupos de índice primo.
+
+\subsection*{Ejercicio 2. (25 puntos)}
+Considere a $G$ actuando en sí mismo por traslación. Es decir, tenemos la acción $\alpha : G \times G \to G$
+dada por $\alpha(g, h) = gh$, donde el lado izquierdo es el producto del grupo $G$. Muestre que esta acción
+tiene una sóla órbita y que $G_x = 1$ para todo $x \in G$.
+
 \begin{proof}
-Sea $A_6$ es un grupo simple\footnote{Se demostró en la tarea pasada.} de orden $360 = 2^2 \cdot 3^2 \cdot 5$.
-Si $H$ fuera un subgrupo de índice primo entonces $[A_6 : H] = 2,3,5$. Por la generalización del teorema de
-Cailey\footnote{\emph{\textbf{Teorema 3.14}. Si $H \leq G$ y $[G : H] = n$, entonces hay un homomorfismo
-$\rho : G \to S_n$ con $\ker \rho \leq H$.}} entonces hay un homomorfismo $\varphi : A_6 \to S_n$ con
-$n = 2,3,5$ con $\varphi \subset H$, en particular $\ker \varphi$ es un subgrupo normal de $A_6$ con
-$\ker \varphi \neq A_6$. Como $A_6$ es simple, $\ker \varphi = 1$ y $\varphi$ es inyectiva. Pero esto es
-imposible porque $|S_5| = 120 < 360$.
+Si $x \in G$, entonces la órbita $\mathcal{O}(x) = G$ porque si $g \in G$, entonces $g = (gx^{-1})x$. El
+estabilizador $G_x$ de $x$ es $\{ 1 \}$ porque si $x = \alpha(a, x) = ax$, entonces $a = 1$. De hecho uno dicee
+$G$ actúa transitivamente en $X$ cuando haya alguna $x \in X$ con $\mathcal{O}(x) = X$.
 \end{proof}
 
-\subsection*{Ejercicio 3. (30 puntos)}
-Sea $G$ un grupo simple \emph{infinito}. Demuestre que
-\begin{enumerate}
-\item Todo $x \in G$ con $x \neq 1$ tiene una cantidad infinita de conjugados.
+
+\subsection*{Ejercicio 3. (25 puntos)}
+Si $G$ es finito y $c$ es el número de clases de conjugación en $G$, demuestre que
+
+$$ c = \frac{1}{|G|} \sum_{\tau \in G} |C_{G} (\tau)| $$
+
 \begin{proof}
-Por contrapositiva. Si tiene una cantidad finita de conjugados, entonces $G$ no es simple.
-
-Sea $X$ denotado como el conjunto finito de conjugados de $x$ y sea $S_X$ el grupo simétrico de $X$. Sea
-$\phi : G \to S_n$ el homomorfismo definido como sigue. Para $g \in G$, $\phi(g)$ es la permutación de $X$ que
-toma $y \in X$ a $gyg^{-1}$. Verifiquemos que es inyectiva y que $\phi$ sea un homomorfismo.
-
-Sea $H = \ker \phi$. Entonces $H$ es un subrupo normal de $G$. Si $H \neq 1$ y $H \neq G$, entonces $G$ no es
-simple.
-Si $H = 1$, entonces $\phi$ es inyectiva de un grupo infinito $G$ a un grupo finito $S_X$, lo cual es imposible.
-Si $H = G$, entonces implica que $x \in Z(G)$. Como $x \neq e$, implica que $Z(G)$ es no trivial. Ya que
-$Z(G)$ es un subrupo normal de de $G$, si $Z(G) \neq G$ entonces $G$ no es simple.
-De lo contrario, $G$ sería conmutativo y un grupo conmutativo infinito no es simple.
+:(
 \end{proof}
 
-\item Todo subgrupo propio $H \neq 1$ tiene una cantidad infinita de conjugados.
+
+\subsection*{Ejercicio 4. (25 puntos)}
+Sea $p$ un número primo y sea $X$ un $G$-conjunto finito, donde $|G| = p^n$ y $|X|$ no es divisible por $p$.
+Demuestre que existe $x \in X$ tal que $\tau x = x$ para todo $\tau \in G$.
+
 \begin{proof}
-\Large{\frownie}
+:(
 \end{proof}
-\end{enumerate}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

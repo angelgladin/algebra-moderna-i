@@ -78,20 +78,20 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{
-    \vspace{-2.2em}
+    \vspace{-2.75em}
         Universidad Nacional Autónoma de México\\
         Facultad de Ciencias\\
         Álgebra Moderna I\\
     \vspace{.5cm}
     \large
-        \textbf{Tarea 8}
+        \textbf{Tercer examen parcial}
 }
 \author{
     Ángel Iván Gladín García\\
     No. cuenta: 313112470\\
     \texttt{angelgladin@ciencias.unam.mx}
 }
-\date{28 de Abril 2020}
+\date{16 de Mayo 2020}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,53 +105,61 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Ejercicio 1. (40 puntos)}
-Demuestre que $S_n$\footnote{Con $n > 4$.} no tiene subgrupos de índice $t$ con $2 < t < n$.
-\begin{proof}
-Sea $G = S_n$ y $A_n$ el grupo alternante de grado $n$ (el cual es simple). Sabemos que el único subgrupo no
-trivial de $G$ es $A_n$. Sea $H \leq G$ y $G/H$ el conjunto de las clases laterales izquierdas de $H$. Sea
-$S_{G/H}$ el grupo simétrico en $G/H$ y $f : G \to S_{G/H}$ el homomorfismo inducido por los donjugados de $G$
-en $G/H$. Sea $N$ el kernel de $f$, entones $N$ es un subgrupo de $H$. Ya que $|G| = n!$ y $S_{G/H} = m!$,
-$f$ no puede ser inyectiva. Entonces el único grupo normal no tricial de $G$ es $A_n$, entonces $N = A_n$.
-Por tanto $[G : N] = 2$ y $H = N$ y de ahí que $t = 2$.
-\end{proof}
-
-\subsection*{Ejercicio 2. (30 puntos)}
-Demuestre que $A_6$ no tiene subgrupos de índice primo.
-\begin{proof}
-Sea $A_6$ es un grupo simple\footnote{Se demostró en la tarea pasada.} de orden $360 = 2^2 \cdot 3^2 \cdot 5$.
-Si $H$ fuera un subgrupo de índice primo entonces $[A_6 : H] = 2,3,5$. Por la generalización del teorema de
-Cailey\footnote{\emph{\textbf{Teorema 3.14}. Si $H \leq G$ y $[G : H] = n$, entonces hay un homomorfismo
-$\rho : G \to S_n$ con $\ker \rho \leq H$.}} entonces hay un homomorfismo $\varphi : A_6 \to S_n$ con
-$n = 2,3,5$ con $\varphi \subset H$, en particular $\ker \varphi$ es un subgrupo normal de $A_6$ con
-$\ker \varphi \neq A_6$. Como $A_6$ es simple, $\ker \varphi = 1$ y $\varphi$ es inyectiva. Pero esto es
-imposible porque $|S_5| = 120 < 360$.
-\end{proof}
-
-\subsection*{Ejercicio 3. (30 puntos)}
-Sea $G$ un grupo simple \emph{infinito}. Demuestre que
 \begin{enumerate}
-\item Todo $x \in G$ con $x \neq 1$ tiene una cantidad infinita de conjugados.
+
+\item Demuestre que si $G \leq S_n$ contiene permutaciones impares, entonces $|G|$ es par y exactamente la
+mitad de los elementos de $G$ son permutaciones impares.
 \begin{proof}
-Por contrapositiva. Si tiene una cantidad finita de conjugados, entonces $G$ no es simple.
+Sea $E$ un subrupo de todas las permutaciones pares de $G$. Sea $\beta$ una permutación impar de $G$
+(por hipótesis), entonces cada elemento de la clases lateral izquiera $\beta E$ es una permutación impar
+(porque el producto de permutaciones impares con permutaciones pares da una permutación impar). Sea
+$\alpha$ una permutación impar de $G$, como $G$ es un subgrupo, entonces hay un elemento $\gamma \in E$ tal
+que $\alpha = \beta \gamma$. Como $\alpha$ y $\beta$ son impares, concluimos que $\gamma$ es par y por tanto
+$\gamma \in E$.
+De ahí que $\alpha \in \beta E$. Por tanto $\beta E$ contiene todas las permutaciones impares de $G$.
 
-Sea $X$ denotado como el conjunto finito de conjugados de $x$ y sea $S_X$ el grupo simétrico de $X$. Sea
-$\phi : G \to S_n$ el homomorfismo definido como sigue. Para $g \in G$, $\phi(g)$ es la permutación de $X$ que
-toma $y \in X$ a $gyg^{-1}$. Verifiquemos que es inyectiva y que $\phi$ sea un homomorfismo.
-
-Sea $H = \ker \phi$. Entonces $H$ es un subrupo normal de $G$. Si $H \neq 1$ y $H \neq G$, entonces $G$ no es
-simple.
-Si $H = 1$, entonces $\phi$ es inyectiva de un grupo infinito $G$ a un grupo finito $S_X$, lo cual es imposible.
-Si $H = G$, entonces implica que $x \in Z(G)$. Como $x \neq e$, implica que $Z(G)$ es no trivial. Ya que
-$Z(G)$ es un subrupo normal de de $G$, si $Z(G) \neq G$ entonces $G$ no es simple.
-De lo contrario, $G$ sería conmutativo y un grupo conmutativo infinito no es simple.
+Como $|\beta E| = |E|$, se concluye que exactamente la mitad de los elementos son permutaciones pares
+y la otra mitad impar, lo cual implica que $G$ es par.
 \end{proof}
 
-\item Todo subgrupo propio $H \neq 1$ tiene una cantidad infinita de conjugados.
+\item Sea $G$ un grupo finito que contiene un subgrupo $H$ de índice $p$, donde $p$ es el primo más pequeño
+que divide al orden de $G$. Demuestre que $H$ es normal en $G$.
 \begin{proof}
-\Large{\frownie}
+Sea $H$ el subgrupo de ínidce $p$, donde $p$ es el primo más pequeño que divide al orden de $|G|$. Entonces
+$G$ actúa en el conjunto de las clases laterales izquierdas de $H$, $\{ gH \ | \ g \in G \}$ por la
+multiplicación izquierda, $x \cdot (gH) = xgH$.
+
+Esa acción induce un homomorfismo $\rho : G \to S_p$, con su kernel que está contenido en $H$\footnote{
+    \textbf{Teorema 3.14} \emph{Si $H \leq G$ y $[G:H] = n$, entonces hay un homomorfismo $\rho : G \to S_n$
+    con $\ker \rho \leq H$.}
+}. Sea $K$ el kernel. Entonces $G/K$ es isomorfa al subgrupo de $S_p$ y entonces tiene un orden que divide
+a $p!$. Pero también tiene que tener orden que divida a $G$, y como $p$ es el primo más pequeño que divide
+a $|G|$ se sigue que $|G/K| = p$. Como $|G/K| = [G:K] = [G:H][H:K] = p[H:K]$, se sigue que $[H:K] = 1$, 
+y de ahí que $K = H$. Como $K$ es normal, $H$ también era normal.
 \end{proof}
-\end{enumerate}
+
+\begin{definition}
+    Un $G$-conjunto es transitivo, si tiene una sola órbita, es decir, para cualesquiera $x, y \in X$, existe
+    $g \in G$ tal que $x = gy$.
+\end{definition}
+
+\item Si $X$ es un $G$-conjunto, demuestre que cada una de sus órbitas es un $G$-conjunto transitivo.
+\begin{proof}
+Sea $\mathcal{O}$ una órbita del $G$-conjunto, se tiene por definición que si $g \in G$ y $x \in \mathcal{O}$
+entonces $gx \in \mathcal{O}$, y así $\mathcal{O}$ es cerrado bajo producto. Además por definición, para
+cualqier $x_1, x_2 \in \mathcal{O}$ existe un $g \in G$ tal que $g x_1 = x_2$, teniendo así que cada órbita
+es un $G$-conjunto transitivo.
+\end{proof}
+
+\item Demuestre que $A_5$ no tiene subgrupos de orden 30.
+\begin{proof}
+Supongamos que $A_5$ tiene un subgrupo de orden 30, digamos $H$. Entonces $[A_5 : H] = 2$ lo que implica que
+$H$ es normal\footnote{En la tarea 4 se demostró que si \emph{$G$ un grupo y $H$ un subgrupo de $G$ de índice
+igual a 2, entonces $H$ es un subgrupo normal de $G$.}}.
+Pero como $A_5$ es simple\footnote{\textbf{Teorema 3.11} \emph{$A_n$ es simple para toda $n \geq 5$}.}, lo
+cual nos lleva a una contradicción.
+\end{proof}
+\end{enumerate} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
